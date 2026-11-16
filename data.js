@@ -12,7 +12,7 @@ window.KY_DATA = {
 
 	suKien: {
 		ten: 'Buổi chụp ảnh kỷ yếu',
-		ngayGio: '2027-03-21T07:30', // <-- SỬA: đây là ngày MẪU, hãy thay bằng ngày thật (năm-tháng-ngàyTgiờ:phút)
+		ngayGio: '2026-11-29T07:30', // <-- SỬA: đây là ngày MẪU, hãy thay bằng ngày thật (năm-tháng-ngàyTgiờ:phút)
 		diaDiem: 'Trường THPT Cẩm Lý',
 		diaChi: '', // <-- SỬA: điền địa chỉ trường nếu muốn hiển thị
 		banDo: 'https://maps.app.goo.gl/vPpi2255bQj7YwAP6'

@@ -227,17 +227,6 @@
 	}
 
 	// Nút mời khách tự tạo thiệp (dưới dòng "Tạo Thiệp Tại Kỷ Yếu TNT MEDIA"); không hiện khi chủ thiệp đang sửa trong app.
-	function cta() {
-		var c = document.querySelector('.ky-credit'), H = window.KY_HOST;
-		if (!c || (H && H.mode === 'edit') || document.querySelector('.ky-cta')) return;
-		var a = document.createElement('a');
-		a.className = 'ky-cta';
-		a.href = 'https://kyyeutnt.vn/?utm_source=thiep&utm_medium=nut-cuoi-thiep'; // về trang chủ Kỷ Yếu TNT MEDIA
-		a.target = '_blank'; a.rel = 'noopener';
-		a.textContent = '✨ Tạo thiệp kỷ yếu miễn phí như thế này';
-		c.insertAdjacentElement('afterend', a);
-	}
-
 	// Pháo giấy (canvas, tự xoá sau ~5s). Dùng chung cho popup voucher.
 	function phaoGiay(n) {
 		if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -256,47 +245,6 @@
 
 	// Popup "voucher kỷ yếu 10%" cho khách xem thiệp (15–20s sau khi mở thiệp). Không hiện khi chủ thiệp xem/sửa.
 	// Bỏ qua -> 3 ngày sau mới hiện lại; đã nhận -> không hiện nữa.
-	function voucher() {
-		var H = window.KY_HOST, LS = 'kyVoucher';
-		if (window.KY_EDIT || q.has('sua') || (H && (H.mode === 'edit' || H.chu))) return;
-		var s = {}; try { s = JSON.parse(localStorage.getItem(LS) || '{}') || {}; } catch (e) {}
-		if (s.nhan || (s.bo && Date.now() - s.bo < 3 * 864e5)) return;
-		var hen = null;
-		function bat() { if (!hen) hen = setTimeout(hien, window.__kyVcMs || 15000 + Math.random() * 5000); } // __kyVcMs: chỉ để kiểm thử
-		if (document.querySelector('.ky-intro')) document.addEventListener('ky:open', bat); else bat();
-		function luu(o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} }
-		function hien() {
-			if (document.querySelector('.ky-vc') || document.querySelector('.ky-lb.open')) { hen = setTimeout(hien, 4000); return; }
-			var st = document.createElement('style');
-			st.textContent = '.ky-vc{position:fixed;left:50%;bottom:18px;z-index:2147483645;width:min(360px,calc(100vw - 24px));transform:translate(-50%,30px);opacity:0;transition:transform .45s cubic-bezier(.2,1.4,.4,1),opacity .3s;font-family:"Be Vietnam Pro",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}' +
-				'.ky-vc.in{transform:translate(-50%,0);opacity:1}.ky-vc .b{position:relative;padding:18px 18px 16px;border-radius:20px;background:linear-gradient(140deg,#fff 0%,#fff5fa 60%,#f3edff 100%);box-shadow:0 22px 50px -18px rgba(43,33,64,.6),0 0 0 1px rgba(236,72,153,.18);text-align:center;color:#2b2140}' +
-				'.ky-vc .x{position:absolute;top:8px;right:10px;width:28px;height:28px;border:0;border-radius:50%;background:rgba(43,33,64,.07);color:#2b2140;font-size:17px;line-height:28px;cursor:pointer;padding:0}' +
-				'.ky-vc .g{display:inline-grid;place-items:center;width:58px;height:58px;margin-top:-44px;border-radius:50%;background:linear-gradient(135deg,#f472b6,#8b5cf6);color:#fff;font-size:28px;box-shadow:0 10px 22px -8px rgba(139,92,246,.8);animation:ky-vc-l 1.6s ease-in-out infinite}' +
-				'.ky-vc .t1{margin:8px 0 2px;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#ec4899}.ky-vc .t2{margin:0;font-size:20px;font-weight:800;line-height:1.25}.ky-vc .t2 b{color:#ec4899;font-size:1.25em}' +
-				'.ky-vc .t3{margin:6px 0 14px;font-size:13.5px;line-height:1.5;color:#6e6182}.ky-vc .a{display:flex;gap:8px}.ky-vc .a button{flex:1;padding:12px 10px;border-radius:12px;border:0;font:700 14.5px inherit;font-family:inherit;cursor:pointer}' +
-				'.ky-vc .ok{background:linear-gradient(90deg,#ec4899,#8b5cf6);color:#fff;box-shadow:0 10px 20px -10px rgba(236,72,153,.9)}.ky-vc .no{background:#fff;color:#6e6182;box-shadow:inset 0 0 0 1.5px #e6dff0}' +
-				'@keyframes ky-vc-l{50%{transform:translateY(-4px) rotate(-6deg)}}';
-			document.head.appendChild(st);
-			var d = document.createElement('div');
-			d.className = 'ky-vc'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', 'Voucher kỷ yếu 10%');
-			d.innerHTML = '<div class="b"><button class="x" type="button" aria-label="Đóng">×</button><div class="g">🎁</div><p class="t1">Chúc mừng bạn!</p><p class="t2">Bạn nhận được voucher kỷ yếu <b>-10%</b></p>' +
-				'<p class="t3">Ưu đãi chụp ảnh kỷ yếu tại <b>TNT MEDIA</b> dành riêng cho khách xem thiệp.</p><div class="a"><button class="no" type="button">Bỏ qua</button><button class="ok" type="button">Nhận ngay 🎉</button></div></div>';
-			document.body.appendChild(d);
-			requestAnimationFrame(function () { d.classList.add('in'); });
-			phaoGiay(140);
-			function dong() { d.classList.remove('in'); setTimeout(function () { d.remove(); st.remove(); }, 400); }
-			function boQua() { luu({ bo: Date.now() }); dong(); }
-			d.querySelector('.x').onclick = boQua;
-			d.querySelector('.no').onclick = boQua;
-			d.querySelector('.ok').onclick = function () {
-				luu({ nhan: Date.now() });
-				var u = 'https://taothiep.kyyeutnt.vn/uu-dai?ve=' + encodeURIComponent(location.href.split('#')[0]) + '&utm_source=thiep&utm_medium=popup-voucher';
-				window.open(u, '_blank', 'noopener');
-				dong();
-			};
-		}
-	}
-
 	function form() {
 		document.querySelectorAll('form[data-ky-form]').forEach(function (f) {
 			var msg = f.querySelector('.ky-msg');
@@ -362,8 +310,6 @@
 		lightbox();
 		form();
 		actions();
-		cta();
-		voucher();
 		document.documentElement.classList.add('ky-js');
 	}
 	if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

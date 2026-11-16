@@ -24,10 +24,6 @@ html.ky-lock,html.ky-lock body{overflow:hidden}
 .ky-form{display:flex;flex-direction:column;gap:10px}
 .ky-form.sent .ky-msg{font-weight:600}
 .ky-hide{position:absolute!important;left:-9999px!important}
-.ky-credit a{color:inherit;text-decoration:none}
-.ky-credit a:hover{text-decoration:underline}
-.ky-cta{position:relative;display:table;margin:12px auto 0;padding:8px 16px;border-radius:30px;border:1px solid currentColor;color:inherit;font-size:12.5px;font-weight:600;letter-spacing:.02em;text-decoration:none;opacity:.85;transition:opacity .2s,transform .2s}
-.ky-cta:hover{opacity:1;transform:translateY(-2px)}
 .ky-music{position:fixed;z-index:900;bottom:18px;right:max(16px,calc(50vw - 224px));width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;font-size:18px}
 .ky-music.on{animation:kySpin 3s linear infinite}
 @keyframes kySpin{to{transform:rotate(360deg)}}
