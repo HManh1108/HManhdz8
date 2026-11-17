@@ -1,15 +1,4 @@
-/*
- * Sửa thông tin trực tiếp trên thiệp kỷ yếu.
- * Nạp SAU data.js và TRƯỚC ky.js:  <script src="data.js"></script><script src="edit.js"></script><script src="ky.js"></script>
- *
- * - Nút "✏️ Sửa thiệp" hiện khi link KHÔNG có ?khach= (link gửi khách sẽ không thấy), hoặc có ?sua=1 (vào thẳng chế độ sửa).
- *   Ép bật/tắt: window.KY_EDIT = true | false (khai báo trước khi nạp file này).
- * - Chạm vào chữ có viền nét đứt để gõ lại; chạm ảnh để đổi ảnh; chạm ngày/giờ để chọn lịch;
- *   lịch trình + album có nút thêm / xoá. Mọi chữ cùng một trường được cập nhật cùng lúc.
- * - Tự lưu vào trình duyệt (localStorage) — dữ liệu dùng chung cho mọi mẫu, đổi mẫu vẫn giữ thông tin.
- * - Hệ thống thật: khai báo window.KY_SAVE = function (thayDoi, toanBo) { return fetch(...) } để lưu về máy chủ.
- * - "Xuất dữ liệu" tải về file data.js mới (window.KY_DATA = {...}).
- */
+
 (function () {
 	'use strict';
 	var STORE = 'ky-thiep-sua-v1';

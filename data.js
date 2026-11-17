@@ -1,20 +1,16 @@
-/*
- * Dữ liệu thiệp kỷ yếu của Nguyễn Huy Mạnh.
- * Tên khách mời lấy từ link: index.html?khach=Bạn%20Lan
- */
 window.KY_DATA = {
 	hoTen: 'Nguyễn Huy Mạnh',
-	tenGoi: 'Mạnh',
+	tenGoi: 'Huy Mạnh',
 	lop: '12A5',
 	truong: 'THPT Cẩm Lý',
 	nienKhoa: '2024 – 2027',
-	anhChinh: '',
+	anhChinh: 'assets/anh/chat.png',
 
 	suKien: {
 		ten: 'Buổi chụp ảnh kỷ yếu',
-		ngayGio: '2026-11-29T07:30', // <-- SỬA: đây là ngày MẪU, hãy thay bằng ngày thật (năm-tháng-ngàyTgiờ:phút)
+		ngayGio: '2026-11-29T07:30',
 		diaDiem: 'Trường THPT Cẩm Lý',
-		diaChi: '', // <-- SỬA: điền địa chỉ trường nếu muốn hiển thị
+		diaChi: '',
 		banDo: 'https://maps.app.goo.gl/vPpi2255bQj7YwAP6'
 	},
 
@@ -35,8 +31,26 @@ window.KY_DATA = {
 	loiMoiLon: 'Ba năm cấp ba sắp khép lại, buổi chụp ảnh kỷ yếu là dấu mốc rất đáng nhớ của tuổi học trò. Trân trọng kính mời tới dự và chung vui — sự hiện diện ấy là niềm vinh hạnh và niềm vui lớn nhất trong ngày đặc biệt này.',
 	loiNhan: 'Thanh xuân không có nếu như — chỉ có những ngày ta đã sống hết mình.',
 
-	album: [],
+		album: [
+		'assets/anh/1.jpg',
+		'assets/anh/2.jpg',
+		'assets/anh/3.jpg',
+		'assets/anh/4.jpg',
+		'assets/anh/5.jpg',
+		'assets/anh/6.jpg',
+		'assets/anh/7.jpg',
+		'assets/anh/8.jpg',
+		'assets/anh/9.jpg',
+		'assets/anh/10.jpg',
+		'assets/anh/11.JPG',
+		'assets/anh/12.JPG',
+		'assets/anh/13.JPG',
+		'assets/anh/14.JPG',
+		'assets/anh/15.JPG',
+		'assets/anh/16.JPG',
+		'assets/anh/17.jfif',
+		'assets/anh/18.jfif'
+	],
 
-	nhacNen: 'https://res.cloudinary.com/dkv9isqz5/video/upload/v1787644111/c%C3%B3_h%E1%BA%B9n_v%E1%BB%9Bi_thanh_xu%C3%A2n_-_MONSTAR_official_music_video_jldidp.mp3',
-	donVi: 'TNT MEDIA'
+	nhacNen: 'https://res.cloudinary.com/dkv9isqz5/video/upload/v1787644111/c%C3%B3_h%E1%BA%B9n_v%E1%BB%9Bi_thanh_xu%C3%A2n_-_MONSTAR_official_music_video_jldidp.mp3'
 };

@@ -1,16 +1,4 @@
-/*
- * Hiệu ứng chuyển động chung cho thiệp kỷ yếu (nạp sau ky.js).
- *
- *   <html data-fx="petal|chalk|spark|dust|star">  hạt bay nền + vệt theo ngón tay; màu lấy từ CSS --fx1/--fx2/--fx3
- *   [data-split]          chữ bay vào từng ký tự khi khối hiện (.in)
- *   [data-par="0.15"]     trôi lệch theo cuộn (parallax)
- *   [data-tilt]           nghiêng 3D theo ngón tay / con quay điện thoại + vệt sáng
- *   [data-scratch="Cào để xem ngày"]  phủ lớp cào; cào hết ~50% thì lộ nội dung + pháo giấy
- *   [data-drag]           kéo thả tự do (sticker)
- *   .btn                  gợn sóng khi bấm
- *   [data-cd-*]           số đếm ngược lật khi đổi
- * Gọi tay: FX.burst(x, y, n) — pháo giấy tại toạ độ màn hình.
- */
+
 (function () {
 	'use strict';
 	var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
